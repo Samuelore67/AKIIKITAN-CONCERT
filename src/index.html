@@ -10,20 +10,96 @@
 
   <!-- 🟣 Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 
   <!-- 🟣 Font Awesome Icons -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
   <link rel="stylesheet" href="./style.css">
 
+   <!-- Animate.css for smooth entrance effects -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+
   <!-- 🟣 AOS Animation Library -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<style>
+     /* Soft background glow animation */
+    @keyframes pulseGlow {
+      0% { box-shadow: 0 0 20px rgba(168, 85, 247, 0.3); }
+      50% { box-shadow: 0 0 40px rgba(249, 115, 22, 0.5); }
+      100% { box-shadow: 0 0 20px rgba(168, 85, 247, 0.3); }
+    }
+    .glow {
+      animation: pulseGlow 3s infinite ease-in-out;
+    }
+
+    /* Fade overlay animation */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .fade-overlay {
+      animation: fadeIn 1s ease forwards;
+    }
+</style>
+  
 </head>
 
 <body class="bg-white text-gray-800 font-sans overflow-x-hidden">
 
+    
+  <!-- 🌟 Main Page Content (Index Simulation) -->
+  <main class="text-white text-center space-y-4">
+    <h1 class="text-4xl font-bold">Welcome to Akiikitan Concert 🎶</h1>
+    <p class="text-lg">Loading excitement... please wait 👇</p>
+  </main>
+
+  <!-- 🎬 Welcome Advertisement Modal -->
+  <div id="adModal" class="fixed inset-0 bg-black bg-opacity-80 fade-overlay flex justify-center items-center z-[9999] hidden">
+    <div class="relative bg-white rounded-3xl overflow-hidden shadow-2xl max-w-lg w-[90%] text-center animate__animated animate__fadeInUp glow">
+
+      <!-- ❌ Close Button -->
+    <button id="closeAdModal" class="absolute top-3 right-4 text-gray-700 text-3xl font-bold hover:text-red-500 transition">&times;</button>
+<a href="#home"></a>
+      <!-- 🎥 Video -->
+      <video autoplay muted playsinline loop class="w-full h-64 object-cover">
+        <source src="images/455810_Christmas_Girl_1920x1080.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+
+      <!-- 💬 Text Content -->
+      <div class="p-6 space-y-4">
+        <h2 class="text-2xl font-bold text-purple-700 animate__animated animate__bounceIn">
+          🎉 Welcome to Akiikitan Concert 2025!
+        </h2>
+        <p class="text-gray-700">
+          Pay only <span class="text-orange-500 font-semibold">₦1,000</span> and stand a chance to win
+          <span class="font-bold text-purple-700">5KG of Rice + more surprises! 🎁</span>
+        </p>
+
+        <!-- 🖼️ Gift Images -->
+        <div class="flex justify-center gap-3 mt-4">
+          <img src="images/rice.avif" alt="Rice" class="w-20 h-20 rounded-xl object-cover shadow-lg transform hover:scale-110 transition duration-300">
+          <img src="images/noodles.avif" alt="Noodles" class="w-20 h-20 rounded-xl object-cover shadow-lg transform hover:scale-110 transition duration-300">
+          <img src="images/oil.avif" alt="Oil" class="w-20 h-20 rounded-xl object-cover shadow-lg transform hover:scale-110 transition duration-300">
+        </div>
+
+        <!-- 🎟️ Buttons -->
+        <div class="flex justify-center gap-3 mt-6">
+          <a href="#pay-win" class="bg-gradient-to-r from-purple-700 to-orange-500 text-white px-5 py-2 rounded-lg font-semibold hover:opacity-90 transform hover:scale-105 transition">
+            🎁 Claim Gift
+          </a>
+          <a href="#tickets" class="bg-white border-2 border-purple-700 text-purple-700 px-5 py-2 rounded-lg font-semibold hover:bg-purple-700 hover:text-white transform hover:scale-105 transition">
+            🎫 Buy Ticket
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- 🟣 Header -->
- <!-- Header -->
+
 <header class="bg-gradient-to-r from-purple-700 to-orange-500 text-white shadow-lg fixed top-0 w-full z-50 fade-in">
   <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
     <!-- Logo -->
@@ -67,7 +143,6 @@
     <button id="closeMobileMenuBtn" class="absolute top-6 right-6 text-3xl font-bold">&times;</button>
   </nav>
 </header>
- 
 
   <!-- 🟣 Hero Section -->
   <section id="home" class="pt-32 bg-gradient-to-br from-purple-700 via-orange-500 to-purple-700 text-white text-center py-20 fade-in">
@@ -78,8 +153,7 @@
     </a>
   </section>
 
-  <!-- person -->
-   
+ 
 
 <!-- Marquee Container -->
   <div class=" overflow-hidden w-full bg-gradient-to-r from-purple-700 via-orange-500 to-purple-700 py-3 shadow-lg">
@@ -93,13 +167,13 @@
 
         <!-- Links -->
         <span class="flex items-center space-x-4">
-          <a href="https://www.youtube.com/" target="_blank" class="hover:text-red-500 flex items-center gap-1">
+          <a href="https://www.facebook.com/share/1Bx2TzE6b1/?mibextid=wwXIfr" target="_blank" class="hover:text-red-500 flex items-center gap-1">
             <i class="fab fa-youtube text-lg"></i> <span>YouTube</span>
           </a>
           <a href="https://www.facebook.com/" target="_blank" class="hover:text-blue-400 flex items-center gap-1">
             <i class="fab fa-facebook text-lg"></i> <span>Facebook</span>
           </a>
-          <a href="https://www.tiktok.com/" target="_blank" class="hover:text-gray-300 flex items-center gap-1">
+          <a href="https://www.tiktok.com/@akiikitan_omooba?_r=1&_t=ZS-91IqiCuGP8y" target="_blank" class="hover:text-gray-300 flex items-center gap-1">
             <i class="fab fa-tiktok text-lg"></i> <span>TikTok</span>
           </a>
         </span>
@@ -112,7 +186,7 @@
   <section id="about" class="max-w-6xl mx-auto px-4 py-20 fade-in">
     <h3 class="text-4xl font-bold text-purple-700 mb-6 text-center">About the Program</h3>
     <p class="text-lg text-gray-700 text-center max-w-3xl mx-auto">
-      The Akkitan Concert 2025 brings together gospel music lovers to celebrate faith, joy, and togetherness. Experience performances from top gospel stars, praise moments, and an atmosphere filled with divine inspiration.
+      The Akiikitan Concert 2025 brings together gospel music lovers to celebrate faith, joy, and togetherness. Experience performances from top gospel stars, praise moments, and an atmosphere filled with divine inspiration.
     </p>
     
   </section>
@@ -151,7 +225,7 @@
    <!-- Account Info -->
     <div class="bg-purple-100 border border-purple-400 rounded-xl p-3 sm:p-4 mb-4">
       <p class="font-bold text-lg text-purple-700">Account Number:</p>
-      <p id="accountNumber" class="text-xl sm:text-2xl font-bold text-gray-800 select-all">9022540376</p>
+      <p id="accountNumber" class="text-xl sm:text-2xl font-bold text-gray-800 select-all">7063472432</p>
       <p class="mt-1 text-gray-700 font-medium">
         Bank: <span class="text-orange-500 font-semibold">Opay Bank</span>
       </p>
@@ -273,7 +347,7 @@
     <!-- Account Info -->
     <div class="bg-purple-100 border border-purple-400 rounded-xl p-3 sm:p-4 mb-4">
       <p class="font-bold text-lg text-purple-700">Account Number:</p>
-      <p id="accountNumber" class="text-xl sm:text-2xl font-bold text-gray-800 select-all">9022540376</p>
+      <p id="accountNumber" class="text-xl sm:text-2xl font-bold text-gray-800 select-all">7063472432</p>
       <p class="mt-1 text-gray-700 font-medium">
         Bank: <span class="text-orange-500 font-semibold">Opay Bank</span>
       </p>
@@ -383,7 +457,7 @@
   <section id="previous-videos" class="bg-gradient-to-b from-purple-700 via-indigo-700 to-orange-500 py-20 text-center text-white">
     <!-- All videos kept the same -->
      <div class="max-w-6xl mx-auto px-4"> <h3 class="text-4xl font-bold mb-4">🎥 Previous Concert Highlights</h3> <p class="text-lg text-orange-100 mb-12">Watch powerful moments from past Akkitan sessions</p>
-         <!-- Video Grid --> <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+        <!-- Video Grid --> <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
         <!-- Video 1 --> <div data-aos="zoom-in" data-aos-delay="100" class="relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 group bg-black"> <video controls preload="metadata" class="w-full h-64 object-cover rounded-2xl transition-transform duration-700 group-hover:scale-105"> <source src="images/video1.mp4" type="video/mp4"> Your browser does not support the video tag. </video> <p class="mt-3 text-lg font-semibold text-white">Akkitan Live Worship</p> </div> 
         <!-- Video 2 --> <div data-aos="zoom-in" data-aos-delay="200" class="relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 group bg-black"> <video controls preload="metadata" class="w-full h-64 object-cover rounded-2xl transition-transform duration-700 group-hover:scale-105"> <source src="images/video2.mp4" type="video/mp4"> </video> <p class="mt-3 text-lg font-semibold text-white">Praise Session 2024</p> </div> 
         <!-- Video 3 --> <div data-aos="zoom-in" data-aos-delay="300" class="relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 group bg-black"> <video controls preload="metadata" class="w-full h-64 object-cover rounded-2xl transition-transform duration-700 group-hover:scale-105"> <source src="images/video3.mp4" type="video/mp4"> </video> <p class="mt-3 text-lg font-semibold text-white">The Glory Moment</p> </div> 
@@ -433,6 +507,8 @@
       <div class="flex items-center space-x-4">
         <i class="fa-solid fa-phone text-orange-500 text-2xl"></i>
         <p class="text-lg font-semibold">Call us: <a href="tel:+2349112663122" class="text-purple-700 hover:text-orange-500 transition">+234 911 266 3122</a></p>
+        <p class="text-lg font-semibold">Call us: <a href="tel:+2349039346433" class="text-purple-700 hover:text-orange-500 transition">+234 903 934 6433</a></p>
+        <p class="text-lg font-semibold">Call us: <a href="tel:+2349039346433" class="text-purple-700 hover:text-orange-500 transition">+234 905 076 6830</a></p>
       </div>
 
       <!-- Social Media -->
@@ -468,8 +544,6 @@
   <div id="backToTop" class="fixed bottom-6 right-6 bg-gradient-to-r from-purple-700 to-orange-500 text-white p-4 rounded-full shadow-lg hidden cursor-pointer hover:scale-110 transition">
     <i class="fa-solid fa-arrow-up text-2xl"></i>
   </div>
-
-  
 
   <!-- 🟣 Footer -->
   <footer class="bg-gray-900 text-white py-6 text-center">
@@ -515,8 +589,37 @@
       const forms = document.querySelectorAll("#paymentForm");
       forms.forEach(form => form.addEventListener("submit", handlePaymentFormSubmit));
     });
-  </script>
 
+    document.addEventListener("DOMContentLoaded", () => {
+      const adModal = document.getElementById("adModal");
+      const closeAdModal = document.getElementById("closeAdModal");
+
+      // Show the modal automatically after 1 second
+      setTimeout(() => {
+        adModal.classList.remove("hidden");
+      }, 1000);
+
+      // Close when clicking the X button
+      closeAdModal.addEventListener("click", () => {
+        adModal.classList.add("animate__fadeOutDown");
+        setTimeout(() => {
+          adModal.classList.add("hidden");
+        }, 700);
+      });
+
+      // Optional: Close when clicking outside the modal
+      adModal.addEventListener("click", (e) => {
+        if (e.target === adModal) {
+          adModal.classList.add("animate__fadeOutDown");
+          setTimeout(() => {
+            adModal.classList.add("hidden");
+          }, 700);
+        }
+      });
+    });
+
+  </script>
+    
   <script>
     AOS.init({ duration: 1000, once: true });
   </script>

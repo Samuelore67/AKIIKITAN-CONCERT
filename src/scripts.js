@@ -128,3 +128,32 @@ document.getElementById("copyBtn2")?.addEventListener("click", () => {
   });
 
   
+// AUTO ADVERT
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const adModal = document.getElementById("adModal");
+      const closeAdModal = document.getElementById("closeAdModal");
+
+      // Show the modal automatically after 1 second
+      setTimeout(() => {
+        adModal.classList.remove("hidden");
+      }, 1000);
+
+      // Close when clicking the X button
+      closeAdModal.addEventListener("click", () => {
+        adModal.classList.add("animate__fadeOutDown");
+        setTimeout(() => {
+          adModal.classList.add("hidden");
+        }, 700);
+      });
+
+      // Optional: Close when clicking outside the modal
+      adModal.addEventListener("click", (e) => {
+        if (e.target === adModal) {
+          adModal.classList.add("animate__fadeOutDown");
+          setTimeout(() => {
+            adModal.classList.add("hidden");
+          }, 700);
+        }
+      });
+    });
