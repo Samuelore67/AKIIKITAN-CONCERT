@@ -1,0 +1,90 @@
+   /* Fade-in animation */
+    .fade-in {
+      animation: fadeIn 1.2s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Hover pulse animation */
+    .pulse-hover:hover {
+      transform: scale(1.05);
+      transition: transform 0.3s ease;
+    }
+
+    /* Smooth scroll */
+    html {
+      scroll-behavior: smooth;
+    }
+     /* Tailwind custom animation for marquee */
+    @keyframes marquee {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
+    .animate-marquee {
+      animation: marquee 25s linear infinite;
+    }
+      /* Prevent unwanted horizontal scroll (safe fix) */
+  html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  /* Contain all transforms inside viewport */
+  * {
+    box-sizing: border-box;
+  }
+
+  /* Optional: limit marquee overflow */
+  .animate-marquee {
+    display: inline-block;
+    min-width: 100%;
+    white-space: nowrap;
+  }
+
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fadeInUp {
+    animation: fadeInUp 0.5s ease-out forwards;
+  }
+
+  /* Scroll Fix for Small Devices */
+  #ticketModal {
+    overflow-y: auto;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  /* Ensure modal doesn't exceed screen height */
+  #ticketModal > div {
+    max-height: 95vh;
+    overflow-y: auto;
+  }
+  
+   @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fadeInUp { animation: fadeInUp 0.5s ease-out forwards; }
+
+  #giftModal {
+    overflow-y: auto;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  #giftModal > div {
+    max-height: 95vh;
+    overflow-y: auto;
+  }

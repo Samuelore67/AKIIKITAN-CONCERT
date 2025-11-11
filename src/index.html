@@ -13,59 +13,11 @@
 
   <!-- 🟣 Font Awesome Icons -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
 
   <!-- 🟣 AOS Animation Library -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
-  <style>
-    
-
-    /* Fade-in animation */
-    .fade-in {
-      animation: fadeIn 1.2s ease-in-out;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(15px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* Hover pulse animation */
-    .pulse-hover:hover {
-      transform: scale(1.05);
-      transition: transform 0.3s ease;
-    }
-
-    /* Smooth scroll */
-    html {
-      scroll-behavior: smooth;
-    }
-     /* Tailwind custom animation for marquee */
-    @keyframes marquee {
-      0% { transform: translateX(100%); }
-      100% { transform: translateX(-100%); }
-    }
-    .animate-marquee {
-      animation: marquee 25s linear infinite;
-    }
-      /* Prevent unwanted horizontal scroll (safe fix) */
-  html, body {
-    max-width: 100%;
-    overflow-x: hidden;
-  }
-
-  /* Contain all transforms inside viewport */
-  * {
-    box-sizing: border-box;
-  }
-
-  /* Optional: limit marquee overflow */
-  .animate-marquee {
-    display: inline-block;
-    min-width: 100%;
-    white-space: nowrap;
-  }
-  </style>
 </head>
 
 <body class="bg-white text-gray-800 font-sans overflow-x-hidden">
@@ -162,6 +114,7 @@
     <p class="text-lg text-gray-700 text-center max-w-3xl mx-auto">
       The Akkitan Concert 2025 brings together gospel music lovers to celebrate faith, joy, and togetherness. Experience performances from top gospel stars, praise moments, and an atmosphere filled with divine inspiration.
     </p>
+    
   </section>
 
   <!-- 🟣 Pay & Win Section -->
@@ -171,9 +124,9 @@
       <p class="text-lg text-orange-100 mb-8">
         Join the Akkitan Concert promotion — make a ₦1,000 payment and stand a chance to win a 5kg bag of rice at the live event.
       </p>
-      <button onclick="openPaymentModal()" class="bg-white text-purple-700 px-8 py-4 font-bold rounded-full shadow-xl hover:bg-orange-400 hover:text-white transform hover:scale-105 transition-all duration-300 text-lg">
-        Pay ₦1,000 Now
-      </button>
+        <button id="openGiftModal" class="bg-white text-purple-700 px-8 py-4 font-bold rounded-full shadow-lg hover:bg-orange-400 hover:text-white transition text-lg">
+    Pay Now (₦1,000)
+  </button>
     </div>
 
     <!-- Floating lights -->
@@ -184,31 +137,48 @@
     </div>
   </section>
 
-  <!-- 🟣 Payment Modal (Rice Promo) -->
-  <div id="paymentModal" class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center hidden z-50">
-    <div data-aos="fade-up" class="bg-white rounded-2xl shadow-2xl p-8 max-w-md w-full text-center relative">
-      <button onclick="closePaymentModal()" class="absolute top-3 right-4 text-gray-500 hover:text-red-500 text-2xl font-bold">&times;</button>
-      <h3 class="text-2xl font-bold text-purple-700 mb-3">Pay ₦1,000 to Enter the Draw 🎟️</h3>
-      <p class="text-gray-700 mb-6">After payment, send a screenshot of your transfer to our WhatsApp to confirm your entry.</p>
 
-      <div class="bg-gradient-to-r from-purple-600 to-orange-500 text-white p-4 rounded-lg mb-6">
-        <p class="text-lg font-semibold">Opay Account</p>
-        <p class="text-2xl font-bold mt-1">9022540376</p>
-        <p class="font-medium">Akkitan Concert Promo</p>
-      </div>
+<!-- 🎉 Gift Modal -->
+<div id="giftModal" class="fixed inset-0 bg-black bg-opacity-60 flex justify-center items-center hidden z-50 px-4 overflow-y-auto">
+  <div class="bg-white rounded-2xl shadow-2xl p-6 sm:p-8 w-full max-w-md text-center relative animate-fadeInUp my-10">
 
-      <button id="copyBtn" class="text-purple-900 px-5 py-2 rounded-lg hover:opacity-90 transition">
-        Copy Account Number
-      </button>
+    <!-- Close -->
+    <button id="closeGiftModal" class="absolute top-3 right-3 text-gray-600 hover:text-red-500 text-2xl">&times;</button>
 
-      <br>
-      <a href="https://wa.me/2349050766830?text=Hello%20Akkitan%20Team%2C%20I%20just%20paid%20%E2%82%A61%2C000%20for%20the%20rice%20promotion!"
-         target="_blank"
-         class="block bg-green-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-400 transition-all duration-300">
-        Send Payment Proof via WhatsApp
-      </a>
+    <h3 class="text-2xl sm:text-3xl font-bold text-purple-700 mb-4">🎁 Pay & Win Gift Entry</h3>
+    <p class="text-gray-700 mb-4">Make payment and stand a chance to win amazing prizes!</p>
+
+   <!-- Account Info -->
+    <div class="bg-purple-100 border border-purple-400 rounded-xl p-3 sm:p-4 mb-4">
+      <p class="font-bold text-lg text-purple-700">Account Number:</p>
+      <p id="accountNumber" class="text-xl sm:text-2xl font-bold text-gray-800 select-all">9022540376</p>
+      <p class="mt-1 text-gray-700 font-medium">
+        Bank: <span class="text-orange-500 font-semibold">Opay Bank</span>
+      </p>
     </div>
+
+    <!-- Copy Button -->
+    <button id="copyBtn2" class="bg-gradient-to-r from-purple-600 to-orange-500 text-white px-4 sm:px-5 py-2 sm:py-3 rounded-lg hover:opacity-90 transition text-sm sm:text-base w-full">
+      Copy Account Number
+    </button>
+
+    <p class="text-gray-600 text-sm mb-4">After payment, fill out this form to confirm your entry.</p>
+
+    <!-- Payment Confirmation Form -->
+    <form action="gift_payment.php" method="POST" enctype="multipart/form-data" class="space-y-3 text-left">
+      <input type="text" name="fullname" placeholder="Full Name" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500">
+      <input type="email" name="email" placeholder="Email Address" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500">
+      <input type="number" name="amount" placeholder="Amount Paid (₦)" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500">
+      <input type="file" name="receipt" accept="image/*" required class="w-full p-2 border border-gray-300 rounded-lg">
+
+      <button type="submit" class="bg-gradient-to-r from-orange-500 to-purple-700 text-white px-6 py-3 rounded-lg font-bold w-full hover:opacity-90 transition">
+        ✅ Submit & Confirm Entry
+      </button>
+    </form>
+
+    <p class="mt-4 text-sm text-gray-500">Winners will be announced at the next concert! 🎶</p>
   </div>
+</div>
 
   <!-- 🟣 Schedule Section -->
   <section id="schedule" class="bg-gray-50 py-20 fade-in">
@@ -247,36 +217,57 @@
       <button id="buyTicketBtn" class="bg-white text-purple-700 px-8 py-4 font-bold rounded-full shadow-lg hover:bg-orange-400 hover:text-white transition text-lg">
         Buy Ticket (₦1,000)
       </button>
+    
       <p class="mt-6 text-sm italic">Payments supported via Opay</p>
     </div>
   </section>
 
-  <!-- 🟣 Ticket Payment Modal -->
-  <div id="ticketModal" class="fixed inset-0 bg-black bg-opacity-60 flex justify-center items-center hidden z-50">
-    <div class="bg-white rounded-2xl shadow-2xl p-8 max-w-md w-full text-center relative fade-in">
-      <button id="closeModal" class="absolute top-3 right-3 text-gray-600 hover:text-red-500 text-2xl">&times;</button>
-      <h3 class="text-2xl font-bold text-purple-700 mb-4">Akkitan Concert Ticket Payment</h3>
-      <p class="text-gray-700 mb-4">Please make your payment to the account below 👇</p>
+<!-- 🟣 Ticket Payment Modal -->
+<div id="ticketModal" class="fixed inset-0 bg-black bg-opacity-60 flex justify-center items-center z-50 hidden px-4 sm:px-6 md:px-8 overflow-y-auto">
+  <div class="bg-white rounded-2xl shadow-2xl p-6 sm:p-8 w-full max-w-sm sm:max-w-md md:max-w-lg text-center relative fade-in animate-fadeInUp my-10 sm:my-12 md:my-16">
 
-      <div class="bg-purple-100 border border-purple-400 rounded-xl p-4 mb-4">
-        <p class="font-bold text-lg text-purple-700">Account Number:</p>
-        <p id="accountNumber" class="text-2xl font-bold text-gray-800 select-all">9022540376</p>
-        <p class="mt-1 text-gray-700 font-medium">Bank: <span class="text-orange-500 font-semibold">Opay Bank</span></p>
-      </div>
+    <!-- Close Button -->
+    <button id="closeModal" class="absolute top-3 right-3 text-gray-600 hover:text-red-500 text-2xl transition">&times;</button>
 
-      <button id="copyBtn2" class="bg-gradient-to-r from-purple-600 to-orange-500 text-white px-5 py-2 rounded-lg hover:opacity-90 transition">
-        Copy Account Number
-      </button>
+    <!-- Header -->
+    <h3 class="text-2xl sm:text-3xl font-bold text-purple-700 mb-3 sm:mb-4">
+      Akkitan Concert Ticket Payment
+    </h3>
+    <p class="text-gray-700 mb-4 text-sm sm:text-base">
+      Make your payment to the account below 👇
+    </p>
 
-      <p class="text-gray-600 mt-4 text-sm">
-        After sending payment, click confirm and keep your payment receipt.
+    <!-- Account Info -->
+    <div class="bg-purple-100 border border-purple-400 rounded-xl p-3 sm:p-4 mb-4">
+      <p class="font-bold text-lg text-purple-700">Account Number:</p>
+      <p id="accountNumber" class="text-xl sm:text-2xl font-bold text-gray-800 select-all">9022540376</p>
+      <p class="mt-1 text-gray-700 font-medium">
+        Bank: <span class="text-orange-500 font-semibold">Opay Bank</span>
       </p>
-
-      <a href="#" class="block mt-6 bg-orange-500 text-white font-bold py-3 rounded-lg hover:bg-purple-600 transition">
-        I Have Paid
-      </a>
     </div>
+
+    <!-- Copy Button -->
+    <button id="copyBtn2" class="bg-gradient-to-r from-purple-600 to-orange-500 text-white px-4 sm:px-5 py-2 sm:py-3 rounded-lg hover:opacity-90 transition text-sm sm:text-base w-full">
+      Copy Account Number
+    </button>
+
+    <p class="text-gray-600 mt-4 text-xs sm:text-sm">
+      After payment, please fill out the form below to confirm.
+    </p>
+
+    <!-- Payment Confirmation Form -->
+    <form action="payment.php" method="POST" enctype="multipart/form-data" class="mt-4 space-y-3 text-left">
+      <input type="text" name="fullname" placeholder="Full Name" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 text-sm sm:text-base">
+      <input type="email" name="email" placeholder="Email Address" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 text-sm sm:text-base">
+      <input type="number" name="amount" placeholder="Amount Paid (₦)" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 text-sm sm:text-base">
+      <input type="file" name="receipt" accept="image/*" required class="w-full p-2 border border-gray-300 rounded-lg text-sm sm:text-base">
+
+      <button type="submit" class="bg-gradient-to-r from-orange-500 to-purple-700 text-white px-6 py-3 rounded-lg font-bold w-full hover:opacity-90 transition text-sm sm:text-base">
+        ✅ Confirm Payment
+      </button>
+    </form>
   </div>
+</div>
 
   <!-- 🟣 Previous Concert Images -->
   <section id="previous-concerts" class="max-w-6xl mx-auto px-4 py-20 bg-gradient-to-b from-slate-100 to-white text-center">
@@ -334,18 +325,38 @@
         <!-- Video 4 (Full Width) --> <div data-aos="zoom-in" data-aos-delay="400" class="relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 group bg-black sm:col-span-2 md:col-span-3"> <video controls preload="metadata" class="w-full h-80 object-cover rounded-2xl transition-transform duration-700 group-hover:scale-105"> <source src="images/WhatsApp Video 2025-11-10 at 14.29.01_34b0ecb6.mp4" type="video/mp4"> </video> <p class="mt-3 text-xl font-bold text-white">Akkitan Grand Finale 2025</p> </div> </div> </div>
   </section>
 
-  <!-- 🟣 Contact Section -->
-  <section id="contact" class="max-w-6xl mx-auto px-4 py-20 fade-in">
-    <h3 class="text-4xl font-bold text-purple-700 mb-8 text-center">Contact Us</h3>
-    <form onsubmit="sendToWhatsApp(event)" class="grid md:grid-cols-2 gap-4 max-w-3xl mx-auto">
-      <input id="name" type="text" placeholder="Your Name" required class="p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500">
-      <input id="email" type="email" placeholder="Your Email" required class="p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500">
-      <textarea id="message" placeholder="Your Message" required class="p-3 border border-gray-300 rounded-lg col-span-2 focus:ring-2 focus:ring-purple-500"></textarea>
-      <button type="submit" class="bg-gradient-to-r from-orange-500 to-purple-700 text-white px-6 py-3 font-semibold rounded-lg hover:opacity-90 transition col-span-2">
-        Send Message
-      </button>
-    </form>
-  </section>
+ <!-- 🟣 Contact Section -->
+<section id="contact" class="w-full px-4 py-20 fade-in bg-white">
+  <h3 class="text-3xl sm:text-4xl font-bold text-purple-700 mb-8 text-center">
+    Contact Us
+  </h3>
+  <form action="contact.php" method="POST" onsubmit="sendToWhatsApp(event)" 
+        class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full max-w-3xl mx-auto px-2 sm:px-4">
+    
+    <input id="name" 
+           type="text" 
+           placeholder="Your Name" 
+           required 
+           class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500">
+    
+    <input id="email" 
+           type="email" 
+           placeholder="Your Email" 
+           required 
+           class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500">
+    
+    <textarea id="message" 
+              placeholder="Your Message" 
+              required 
+              class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 md:col-span-2 h-32 sm:h-40"></textarea>
+    
+    <button type="submit" 
+            class="w-full md:col-span-2 bg-gradient-to-r from-orange-500 to-purple-700 text-white px-6 py-3 font-semibold rounded-lg hover:opacity-90 transition">
+      Send Message
+    </button>
+  </form>
+</section>
+
 
 <section id="contact" class="max-w-6xl mx-auto px-4 py-20 fade-in">
   <h3 class="text-4xl font-bold text-purple-700 mb-8 text-center" data-aos="fade-up">Another Way To Contact Us</h3>
@@ -361,13 +372,13 @@
 
       <!-- Social Media -->
       <div class="flex items-center space-x-6">
-        <a href="https://www.facebook.com/YourPage" target="_blank" class="text-blue-600 hover:scale-125 transition-transform duration-300">
+        <a href="https://www.facebook.com/share/1Bx2TzE6b1/?mibextid=wwXIfr" target="_blank" class="text-blue-600 hover:scale-125 transition-transform duration-300">
           <i class="fa-brands fa-facebook fa-2xl"></i>
         </a>
-        <a href="https://wa.me/2349112663122" target="_blank" class="text-green-500 hover:scale-125 transition-transform duration-300">
+        <a href="https://wa.me/2349050766830" target="_blank" class="text-green-500 hover:scale-125 transition-transform duration-300">
           <i class="fa-brands fa-whatsapp fa-2xl"></i>
         </a>
-        <a href="https://www.tiktok.com/@YourTikTok" target="_blank" class="text-black hover:scale-125 transition-transform duration-300">
+        <a href="https://www.tiktok.com/@akiikitan_omooba?_r=1&_t=ZS-91IqiCuGP8y" target="_blank" class="text-black hover:scale-125 transition-transform duration-300">
           <i class="fa-brands fa-tiktok fa-2xl"></i>
         </a>
       </div>

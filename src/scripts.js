@@ -18,35 +18,6 @@
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
 
-     // Elements
-  const buyTicketBtn = document.getElementById('buyTicketBtn');
-  const paymentModal = document.getElementById('paymentModal');
-  const closeModal = document.getElementById('closeModal');
-  const copyBtn = document.getElementById('copyBtn');
-  const accountNumber = document.getElementById('accountNumber');
-
-  // Open modal
-  buyTicketBtn.addEventListener('click', () => {
-    paymentModal.classList.remove('hidden');
-  });
-
-  // Close modal
-  closeModal.addEventListener('click', () => {
-    paymentModal.classList.add('hidden');
-  });
-
-  // Copy account number
-  copyBtn.addEventListener('click', () => {
-    const text = accountNumber.textContent;
-    navigator.clipboard.writeText(text).then(() => {
-      copyBtn.textContent = 'Copied ✅';
-      copyBtn.classList.add('bg-green-500');
-      setTimeout(() => {
-        copyBtn.textContent = 'Copy Account Number';
-        copyBtn.classList.remove('bg-green-500');
-      }, 2000);
-    });
-  });
 
    function sendToWhatsApp(event) {
     event.preventDefault();
@@ -60,17 +31,8 @@
 
     window.open(url, "_blank");
   }
-// pay and win prize 
 
-   function openPaymentModal() {
-    document.getElementById('paymentModal').classList.remove('hidden');
-    document.body.style.overflow = 'hidden';
-  }
 
-  function closePaymentModal() {
-    document.getElementById('paymentModal').classList.add('hidden');
-    document.body.style.overflow = 'auto';
-  }
 
    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
   const mobileMenu = document.getElementById('mobileMenu');
@@ -123,3 +85,44 @@ function updateCountdown() {
 setInterval(updateCountdown, 1000);
 updateCountdown();
 
+// modal
+const modal = document.getElementById("ticketModal");
+const openBtn = document.getElementById("buyTicketBtn");
+const closeBtn = document.getElementById("closeModal");
+
+if (openBtn) {
+  openBtn.addEventListener("click", () => {
+    modal.classList.remove("hidden");
+    modal.classList.add("flex");
+  });
+}
+
+if (closeBtn) {
+  closeBtn.addEventListener("click", () => {
+    modal.classList.add("hidden");
+  });
+}
+
+// Copy Account Number
+document.getElementById("copyBtn2")?.addEventListener("click", () => {
+  const acc = document.getElementById("accountNumber").textContent;
+  navigator.clipboard.writeText(acc);
+  alert("✅ Account number copied: " + acc);
+});
+
+//MODAL 2
+
+ const giftModal = document.getElementById("giftModal");
+  const openGiftModal = document.getElementById("openGiftModal");
+  const closeGiftModal = document.getElementById("closeGiftModal");
+  const copyBtn3 = document.getElementById("copyBtn3");
+  const accountNumber2 = document.getElementById("accountNumber2");
+
+  openGiftModal.addEventListener("click", () => giftModal.classList.remove("hidden"));
+  closeGiftModal.addEventListener("click", () => giftModal.classList.add("hidden"));
+  window.addEventListener("click", e => { if (e.target === giftModal) giftModal.classList.add("hidden"); });
+  copyBtn3.addEventListener("click", () => {
+    navigator.clipboard.writeText(accountNumber2.textContent);
+    copyBtn3.textContent = "✅ Copied!";
+    setTimeout(() => copyBtn3.textContent = "Copy Account Number", 2000);
+  });
