@@ -126,3 +126,5 @@ document.getElementById("copyBtn2")?.addEventListener("click", () => {
     copyBtn3.textContent = "✅ Copied!";
     setTimeout(() => copyBtn3.textContent = "Copy Account Number", 2000);
   });
+
+  

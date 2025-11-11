@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Payment Confirmation</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer>
+    document.addEventListener("DOMContentLoaded", function () {
+      const form = document.getElementById("paymentForm");
+
+      form.addEventListener("submit", function (event) {
+        event.preventDefault(); // Stop form reload
+
+        const name = document.getElementById("fullname").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const amount = document.getElementById("amount").value.trim();
+        const receipt = document.getElementById("receipt").files[0];
+
+        // Check all inputs
+        if (!name || !email || !amount || !receipt) {
+          alert("⚠️ Please fill in all fields and upload your receipt before submitting.");
+          return;
+        }
+
+        const phoneNumber = "2349050766830"; // Your WhatsApp number (no +)
+        const message = `Hello! 👋 I just made a payment.\n\nFull Name: ${name}\nEmail: ${email}\nAmount Paid: ₦${amount}\n\nPlease confirm my payment. I will attach my receipt image below. 📎`;
+
+        const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+
+        alert("✅ Click OK to open WhatsApp. Please attach your receipt image before sending.");
+        window.open(whatsappURL, "_blank");
+      });
+    });
+  </script>
+
+  <style>
+    body { font-family: sans-serif; background: #f7f7f7; }
+    .form-container {
+      max-width: 400px;
+      margin: 50px auto;
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    input, button { width: 100%; margin-top: 10px; }
+  </style>
+</head>
+<body>
+  <form id="paymentForm" class="form-container">
+    <h2 class="text-lg font-bold mb-3 text-center">Payment Confirmation</h2>
+
+    <input type="text" id="fullname" placeholder="Full Name" required 
+      class="p-3 border border-gray-300 rounded-lg" />
+
+    <input type="email" id="email" placeholder="Email Address" required 
+      class="p-3 border border-gray-300 rounded-lg" />
+
+    <input type="number" id="amount" placeholder="Amount Paid (₦)" required 
+      class="p-3 border border-gray-300 rounded-lg" />
+
+    <input type="file" id="receipt" accept="image/*" required 
+      class="p-2 border border-gray-300 rounded-lg" />
+
+    <button type="submit"
+      class="bg-gradient-to-r from-orange-500 to-purple-700 text-white px-6 py-3 rounded-lg font-bold hover:opacity-90 transition">
+      ✅ Confirm Payment
+    </button>
+  </form>
+</body>
+</html>
