@@ -63,10 +63,23 @@
     <button id="closeAdModal" class="absolute top-3 right-4 text-gray-700 text-3xl font-bold hover:text-red-500 transition">&times;</button>
 
       <!-- 🎥 Video -->
-      <video autoplay muted playsinline loop class="w-full h-64 object-cover">
-        <source src="images/455810_Christmas_Girl_1920x1080.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
+    <!-- Working public-hosted video (autoplays muted so browsers allow autoplay) -->
+<video
+  class="w-full h-64 object-cover rounded-lg shadow-lg"
+  autoplay
+  muted
+  playsinline
+  loop
+  poster="images/video-poster.jpg"  <!-- optional: show this image while loading -->
+  preload="metadata"
+>
+  <!-- MP4 fallback -->
+  <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4">
+  <!-- WebM fallback (optional) -->
+  <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm" type="video/webm">
+  Your browser does not support the video tag.
+</video>
+
 
       <!-- 💬 Text Content -->
       <div class="p-6 space-y-4">
