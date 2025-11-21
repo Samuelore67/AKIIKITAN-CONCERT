@@ -157,3 +157,16 @@ document.getElementById("copyBtn2")?.addEventListener("click", () => {
         }
       });
     });
+
+     function copyLocation() {
+    const text = 'Agunfoye (Ire 2), Igbogbo, Ikorodu, Lagos — Coordinates: 6.5667, 3.5500';
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(text).then(() => {
+        alert('Location copied to clipboard.');
+      }, () => {
+        prompt('Copy this location:', text);
+      });
+    } else {
+      prompt('Copy this location:', text);
+    }
+  }
