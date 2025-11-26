@@ -6,7 +6,7 @@
   <title>Akkitan Concert 2025 | Session 10</title>
 
   <!-- 🟣 Favicon -->
-  <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+  <link rel="shortcut icon" href="images/fav-akiikitan.jpg" type="image/x-icon">
 
   <!-- 🟣 Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -24,6 +24,21 @@
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <style>
+  .animate-fadeIn { animation: fadeIn 1.3s ease-in-out; }
+  .animate-slideInLeft { animation: slideInLeft 1.3s ease-in-out; }
+  .animate-slideInRight { animation: slideInRight 1.3s ease-in-out; }
+  .animate-scaleUp { animation: scaleUp 1.2s ease-in-out; }
+  .animate-zoomIn { animation: zoomIn 1.3s ease-in-out; }
+  .animate-fadeInUp { animation: fadeInUp 1.5s ease; }
+  .animate-fadeInUp2 { animation: fadeInUp 1.8s ease; }
+
+  @keyframes fadeIn { from{opacity:0;} to{opacity:1;} }
+  @keyframes slideInLeft { from{transform:translateX(-40px);opacity:0;} to{transform:translateX(0);opacity:1;} }
+  @keyframes slideInRight { from{transform:translateX(40px);opacity:0;} to{transform:translateX(0);opacity:1;} }
+  @keyframes scaleUp { from{transform:scale(0.9);opacity:0;} to{transform:scale(1);opacity:1;} }
+  @keyframes zoomIn { from{transform:scale(0.8);opacity:0;} to{transform:scale(1);opacity:1;} }
+  @keyframes fadeInUp { from{transform:translateY(30px);opacity:0;} to{transform:translateY(0);opacity:1;} }
+
      /* Soft background glow animation */
     @keyframes pulseGlow {
       0% { box-shadow: 0 0 20px rgba(168, 85, 247, 0.3); }
@@ -194,15 +209,154 @@
       </div>
     </div>
   </div>
+<!-- 🟣 ABOUT SECTION -->
+<section id="about" class="max-w-6xl mx-auto px-4 py-20 fade-in">
 
-  <!-- 🟣 About Section -->
-  <section id="about" class="max-w-6xl mx-auto px-4 py-20 fade-in">
-    <h3 class="text-4xl font-bold text-purple-700 mb-6 text-center">About the Program</h3>
-    <p class="text-lg text-gray-700 text-center max-w-3xl mx-auto">
-      The Akiikitan Concert 2025 brings together gospel music lovers to celebrate faith, joy, and togetherness. Experience performances from top gospel stars, praise moments, and an atmosphere filled with divine inspiration.
-    </p>
-    
-  </section>
+  <!-- SECTION TITLE -->
+  <h3 class="text-4xl font-bold text-purple-700 mb-10 text-center animate-fadeIn">
+    About the Program
+  </h3>
+
+  <!-- MAIN LAYOUT -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+
+    <!-- LEFT: Text -->
+    <div class="animate-slideInLeft">
+      <p class="text-lg text-gray-700 leading-relaxed">
+        The Akiikitan Concert 2025 brings together gospel music lovers to celebrate 
+        faith, joy, and togetherness. Experience unforgettable performances, 
+        special guest celebrities, and deep moments of divine inspiration.
+      </p>
+
+      <!-- VERIFIED ORGANIZER BOX -->
+      <div class="mt-8 p-5 bg-purple-100 border-l-4 border-purple-600 rounded-lg shadow-sm">
+        <h4 class="text-xl font-semibold text-purple-700">Concert Hosted By:</h4>
+        <p class="text-gray-800 text-lg mt-1 font-medium">
+          Akiikitan — Founder & Visionary Leader
+        </p>
+
+        <!-- TRUST BADGES -->
+        <div class="flex items-center gap-3 mt-4">
+          <span class="px-3 py-1 bg-green-600 text-white text-sm rounded-full">✔ Verified Identity</span>
+          <span class="px-3 py-1 bg-blue-600 text-white text-sm rounded-full">✔ Trusted Organizer</span>
+        </div>
+      </div>
+
+      <!-- PAYMENT TRUST BOX -->
+      <div class="mt-8 bg-white shadow-lg border border-gray-200 p-5 rounded-lg animate-scaleUp">
+        <h5 class="text-xl font-bold text-gray-800 mb-2">Secure Ticket & Gift Collection</h5>
+        <p class="text-gray-600 text-sm">
+          All payments and gift collection are handled securely. Once you pay, 
+          you instantly receive your ticket & gift confirmation code.
+        </p>
+
+        <div class="flex gap-3 mt-4">
+          <span class="px-3 py-1 bg-green-500 text-white text-sm rounded-md">Secure ₦1000 Payment</span>
+          <span class="px-3 py-1 bg-purple-600 text-white text-sm rounded-md">Instant Code</span>
+          <span class="px-3 py-1 bg-yellow-500 text-white text-sm rounded-md">Trusted System</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: Owner Image -->
+    <div class="flex justify-center animate-slideInRight">
+      <img 
+        src="images/fav-akiikitan.jpg"
+        alt="Akiikitan Concert Founder"
+        class="rounded-xl shadow-xl w-full max-w-md object-cover border-4 border-purple-200"
+      >
+    </div>
+
+  </div>
+
+  <!-- 🎟️ TICKET OPTIONS -->
+  <h1 class="text-3xl font-bold text-purple-700 mt-20 mb-6 text-center">
+    Choose Your Ticket
+  </h1>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+
+    <!-- ₦1000 RICE GIFT TICKET -->
+    <a href="#pay-win" class="block">
+      <div class="bg-white shadow-xl rounded-2xl border-2 border-green-500 p-6 hover:scale-105 transition-all duration-300 animate-fadeInUp">
+
+        <!-- Header -->
+        <div class="flex justify-between items-center">
+          <h2 class="text-xl font-bold text-gray-900">🎁 5KG Rice Gift Ticket</h2>
+          <span class="text-sm bg-green-600 text-white px-3 py-1 rounded-full">₦1000</span>
+        </div>
+
+        <div class="border-dashed border-b-2 border-gray-300 my-4"></div>
+
+        <p class="text-gray-700 text-sm">
+          Pay ₦1000 and claim 5KG of rice at the concert. Collect your confirmation instantly.
+        </p>
+
+        <div class="mt-4 flex justify-between items-center">
+          <span class="text-xs text-gray-500">Instant Confirmation</span>
+          <span class="text-green-600 font-semibold text-sm">Get Gift →</span>
+        </div>
+
+      </div>
+    </a>
+
+    <!-- CONCERT SEAT TICKET -->
+    <a href="#ticket" class="block">
+      <div class="bg-white shadow-xl rounded-2xl border-2 border-purple-600 p-6 hover:scale-105 transition-all duration-300 animate-fadeInUp2">
+
+        <!-- Header -->
+        <div class="flex justify-between items-center">
+          <h2 class="text-xl font-bold text-gray-900">🎟️ Concert Sitting Ticket</h2>
+          <span class="text-sm bg-purple-600 text-white px-3 py-1 rounded-full">ENTRY</span>
+        </div>
+
+        <div class="border-dashed border-b-2 border-gray-300 my-4"></div>
+
+        <p class="text-gray-700 text-sm">
+          Get your sitting position ticket for smooth and organized entry into the concert.
+        </p>
+
+        <div class="mt-4 flex justify-between items-center">
+          <span class="text-xs text-gray-500">Fast Entry</span>
+          <span class="text-purple-600 font-semibold text-sm">Get Ticket →</span>
+        </div>
+
+      </div>
+    </a>
+
+  </div>
+
+  <!-- PAST EVENT TITLE -->
+  <h1 class="text-3xl font-bold text-purple-700 mt-20 mb-6 text-center">
+    Celebrities With Akiikitan — Previous Concerts
+  </h1>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+
+    <!-- VIDEOS FIRST -->
+    <div class="space-y-6 animate-fadeIn">
+      <video src="images/ola-aki.mp4" controls class="rounded-xl shadow-lg w-full"></video>
+      <video src="images/man1-aki.mp4" controls class="rounded-xl shadow-lg w-full"></video> 
+    </div>
+
+    <!-- IMAGES -->
+    <div class="space-y-6 animate-fadeInUp">
+      <img src="images/privious-banner.jpg" class="rounded-xl shadow-lg" alt="">
+      <img src="images/akii-pupils.jpg" class="rounded-xl shadow-lg" alt="">
+    </div>
+
+  </div>
+
+  <!-- NOW BANNER -->
+  <h1 class="text-3xl font-bold text-purple-700 mt-20 mb-4 text-center">
+    Current Concert Banner
+  </h1>
+
+  <div class="flex justify-center animate-zoomIn">
+    <img src="images/banner-now.jpg" class="rounded-xl shadow-xl w-full max-w-3xl" alt="">
+  </div>
+
+</section>
 
   <!-- 🟣 Pay & Win Section -->
   <section id="pay-win" class="bg-gradient-to-r from-orange-500 to-purple-700 py-20 text-white text-center relative overflow-hidden">
